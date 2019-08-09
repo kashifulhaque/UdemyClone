@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "913366358597",
+    "firebase_url": "https://nsudemyclone.firebaseio.com",
+    "project_id": "nsudemyclone",
+    "storage_bucket": "nsudemyclone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913366358597:android:1da80f996014fdd7",
+        "android_client_info": {
+          "package_name": "saif.nidhi.udemyclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913366358597-si1gslpedh64d0nur5nlmpt2q6hk17gi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "saif.nidhi.udemyclone",
+            "certificate_hash": "37aac5baf1537bf980bc5525ffbe2ee0a427fdd9"
+          }
+        },
+        {
+          "client_id": "913366358597-pem1mrggr6qkfft520dqvcumh9s46mtp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0fDFd7kTkA7h1uae2X_MJMqf7ge5Bl_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913366358597-pem1mrggr6qkfft520dqvcumh9s46mtp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
