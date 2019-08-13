@@ -1,7 +1,28 @@
 <resources>
     <string name="app_name">UdemyClone</string>
 
+    <!-- Special symbol -->
+    <string name="bullet">•</string>
+
     <!-- General -->
     <string name="login">Login</string>
     <string name="logout">Logout</string>
+
+    <!-- Course Names -->
+    <string name="oo_js">Object Oriented JavaScript</string>
+    <string name="html_css">HTML &amp; CSS Basics</string>
+    <string name="git_github">Git &amp; GitHub for Beginners</string>
+
+    <!-- Course Author Names -->
+    <string name="net_ninja">The Net Ninja</string>
+    <string name="academind">Academind</string>
+
+    <!-- Course Difficulty -->
+    <string name="beginner">Beginner</string>
+
+    <!-- Firebase Database -->
+    <string name="dbnode_courses">courses</string>
+    <string name="dbnode_courses_git">git_github</string>
+    <string name="dbnode_courses_html">html_css</string>
+    <string name="dbnode_courses_js">oo_js</string>
 </resources>
