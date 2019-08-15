@@ -44,7 +44,6 @@ public class DashboardActivity extends AppCompatActivity {
 
         initializeWidgets();
         checkAuth();
-        getFirebaseData();
 
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +103,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void checkAuth() {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Toast.makeText(this, "Logged In.", Toast.LENGTH_SHORT).show();
+            getFirebaseData();
         }
     }
 }

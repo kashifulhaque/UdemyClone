@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -19,13 +18,6 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import saif.nidhi.udemyclone.models.Video;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class VideoActivity extends AppCompatActivity {
@@ -38,10 +30,7 @@ public class VideoActivity extends AppCompatActivity {
     private boolean playWhenReady = true;
     private long playbackPosition;
     private int currentWindow;
-    private String courseCode;
-
-    // Data Models
-    private Video video;
+    private String videoURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +44,7 @@ public class VideoActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         if (Util.SDK_INT > 23) {
-            loadVideo();
+            initializePlayer();
         }
     }
 
@@ -63,7 +52,7 @@ public class VideoActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         if ((Util.SDK_INT <= 23 || player == null)) {
-            loadVideo();
+            initializePlayer();
         }
     }
 
@@ -103,36 +92,14 @@ public class VideoActivity extends AppCompatActivity {
         }
     }
 
-    private void loadVideo() {
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            FirebaseDatabase.getInstance().getReference().child(getString(R.string.dbnode_videos))
-                    .child(courseCode)
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
-                                video = singleSnapshot.getValue(Video.class);
-
-                                if (video != null)
-                                    initializePlayer(video);
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                        }
-                    });
-        }
-    }
-
     private void getDataOverIntent() {
         Intent intent = getIntent();
         if (intent != null) {
-            courseCode = intent.getExtras().getString("courseCode");
+            videoURL = intent.getExtras().getString("downloadURL");
         }
     }
 
-    private void initializePlayer(Video video) {
+    private void initializePlayer() {
         playerView = findViewById(R.id.videoPlayer);
 
         player = ExoPlayerFactory.newSimpleInstance(
@@ -146,7 +113,7 @@ public class VideoActivity extends AppCompatActivity {
         player.setPlayWhenReady(playWhenReady);
         player.seekTo(currentWindow, playbackPosition);
 
-        Uri uri = Uri.parse(video.getDownload_url());
+        Uri uri = Uri.parse(videoURL);
         MediaSource mediaSource = buildMediaSource(uri);
         player.prepare(mediaSource, true, false);
     }

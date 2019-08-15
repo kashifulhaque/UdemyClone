@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import saif.nidhi.udemyclone.R;
-import saif.nidhi.udemyclone.VideoActivity;
+import saif.nidhi.udemyclone.VideoListActivity;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
@@ -70,7 +70,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
     // This method is used to launch a new Activity which displays the profile of the Course to the manager
     private void launchCourse(String course_code) {
-        Intent intent = new Intent(mContext, VideoActivity.class);
+        Intent intent = new Intent(mContext, VideoListActivity.class);
         intent.putExtra("courseCode", course_code);
         mContext.startActivity(intent);
     }
