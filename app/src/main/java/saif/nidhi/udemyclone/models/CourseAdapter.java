@@ -1,6 +1,7 @@
 package saif.nidhi.udemyclone.models;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import saif.nidhi.udemyclone.R;
+import saif.nidhi.udemyclone.VideoActivity;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
@@ -60,18 +62,18 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         holder.mParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // launchCourse(courseCode.get(holder.getAdapterPosition()));
+                launchCourse(courseCode.get(holder.getAdapterPosition()));
             }
         });
 
     }
 
     // This method is used to launch a new Activity which displays the profile of the Course to the manager
-    /*private void launchCourse(String course_code) {
-        Intent intent = new Intent(mContext, VideoPlayer.class);
+    private void launchCourse(String course_code) {
+        Intent intent = new Intent(mContext, VideoActivity.class);
         intent.putExtra("courseCode", course_code);
         mContext.startActivity(intent);
-    }*/
+    }
 
     // This method returns the number of items in the RecyclerView
     @Override

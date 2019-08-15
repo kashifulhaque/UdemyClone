@@ -25,4 +25,5 @@
     <string name="dbnode_courses_git">git_github</string>
     <string name="dbnode_courses_html">html_css</string>
     <string name="dbnode_courses_js">oo_js</string>
+    <string name="dbnode_videos">videos</string>
 </resources>
