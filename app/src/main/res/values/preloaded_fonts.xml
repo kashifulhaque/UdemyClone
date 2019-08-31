@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/aguafina_script</item>
+        <item>@font/anonymous_pro</item>
+        <item>@font/arbutus</item>
+        <item>@font/arizonia</item>
         <item>@font/josefin_sans_light</item>
+        <item>@font/montserrat</item>
+        <item>@font/montserrat_alternates</item>
+        <item>@font/roboto_light</item>
     </array>
 </resources>

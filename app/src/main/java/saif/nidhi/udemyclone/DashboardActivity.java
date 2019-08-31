@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ public class DashboardActivity extends AppCompatActivity {
     private Button mLogout;
     private RecyclerView mRecyclerView;
     private CourseAdapter adapter;
+    private ProgressBar progressBar;
 
     // Model Variables
     private ArrayList<String> courseName = new ArrayList<>();
@@ -88,6 +90,8 @@ public class DashboardActivity extends AppCompatActivity {
 
             initialize();
         }
+
+        progressBar.setVisibility(View.GONE);
     }
 
     private void initialize() {
@@ -99,6 +103,9 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void initializeWidgets() {
         mLogout = findViewById(R.id.btnLogout);
+        progressBar = findViewById(R.id.progressBar);
+
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     private void checkAuth() {

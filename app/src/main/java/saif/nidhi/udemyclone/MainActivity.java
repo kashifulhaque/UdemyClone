@@ -51,13 +51,12 @@ public class MainActivity extends AppCompatActivity {
     private void checkAuth() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            Toast.makeText(this, "Redirect the user to DashboardActivity", Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
             startActivity(intent);
             finish();
-        } else {
-            Toast.makeText(this, "Fire the FirebaseUI Auth", Toast.LENGTH_SHORT).show();
 
+        } else {
             // This chunk of code will start the FirebaseUI activity
             startActivityForResult(
                     AuthUI.getInstance()

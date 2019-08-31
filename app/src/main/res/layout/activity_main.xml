@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkBackground"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/josefin_sans_light"
-        android:text="NSdemy"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="@string/app_name"
+        android:textColor="#1D47CF"
         android:textSize="36sp"
-        android:textColor="#131313"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

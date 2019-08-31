@@ -20,6 +20,9 @@
     <!-- Course Difficulty -->
     <string name="beginner">Beginner</string>
 
+    <!-- Fullscreen Video Activity -->
+    <string name="fullscreen">Fullscreen</string>
+
     <!-- Firebase Database -->
     <string name="dbnode_courses">courses</string>
     <string name="dbnode_courses_git">git_github</string>

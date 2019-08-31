@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,43 +26,24 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
-@SuppressWarnings("FieldCanBeLocal")
-public class VideoActivity extends AppCompatActivity implements ExoPlayer.EventListener {
+public class FullscreenVideoActivity extends AppCompatActivity implements ExoPlayer.EventListener {
 
     // Widgets
     private PlayerView playerView;
     private SimpleExoPlayer player;
-    private Button mFullscreen;
 
     // Variables
     private boolean playWhenReady = true;
     private long playbackPosition;
     private int currentWindow;
     private String videoURL;
-    private ProgressBar progressBarVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
+        setContentView(R.layout.activity_fullscreen_video);
 
         getDataOverIntent();
-        mFullscreen = findViewById(R.id.btnFullscreen);
-
-        if (videoURL.isEmpty()) {
-            mFullscreen.setEnabled(false);
-        } else {
-            mFullscreen.setEnabled(true);
-            mFullscreen.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(VideoActivity.this, FullscreenVideoActivity.class);
-                    intent.putExtra("videoURL", videoURL);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-        }
     }
 
     @Override
@@ -120,17 +99,15 @@ public class VideoActivity extends AppCompatActivity implements ExoPlayer.EventL
     }
 
     private void getDataOverIntent() {
-        progressBarVideo = findViewById(R.id.progressBarVideo);
-        progressBarVideo.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
         if (intent != null) {
-            videoURL = intent.getExtras().getString("downloadURL");
+            videoURL = intent.getExtras().getString("videoURL");
         }
     }
 
     private void initializePlayer() {
-        playerView = findViewById(R.id.videoPlayer);
+        playerView = findViewById(R.id.videoPlayerFullscreen);
 
         player = ExoPlayerFactory.newSimpleInstance(
                 new DefaultRenderersFactory(this),
@@ -165,12 +142,6 @@ public class VideoActivity extends AppCompatActivity implements ExoPlayer.EventL
 
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-                if (playWhenReady && playbackState == Player.STATE_BUFFERING) {
-                    progressBarVideo.setVisibility(View.VISIBLE);
-                }
-                if (playbackState == Player.STATE_READY) {
-                    progressBarVideo.setVisibility(View.GONE);
-                }
             }
 
             @Override
