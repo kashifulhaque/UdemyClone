@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,6 +38,7 @@ public class FullscreenVideoActivity extends AppCompatActivity implements ExoPla
     private long playbackPosition;
     private int currentWindow;
     private String videoURL;
+    private ProgressBar progressBarVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +101,8 @@ public class FullscreenVideoActivity extends AppCompatActivity implements ExoPla
     }
 
     private void getDataOverIntent() {
+        progressBarVideo = findViewById(R.id.progressBarVideo);
+        progressBarVideo.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -142,6 +146,12 @@ public class FullscreenVideoActivity extends AppCompatActivity implements ExoPla
 
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                if (playWhenReady && playbackState == Player.STATE_BUFFERING) {
+                    progressBarVideo.setVisibility(View.VISIBLE);
+                }
+                if (playbackState == Player.STATE_READY) {
+                    progressBarVideo.setVisibility(View.GONE);
+                }
             }
 
             @Override
